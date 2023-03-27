@@ -1,0 +1,43 @@
+.error::before {
+	content: '';
+	display: block;
+	width: 0;
+	height: 0;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 8px solid #FB3F3F;
+	position: absolute;
+	top: -8px;
+	left: 10px;
+}
+
+.error {
+	cursor: pointer;
+	position: relative;
+	background-color: #FB3F3F;
+	padding: 2px 8px;
+	width: fit-content;
+	border-radius: 4px;
+	transform: translateY(-8px);
+	color: white;
+}
+
+.select-item {
+	width: 100%;
+	position: relative;
+}
+
+.select-item>span {
+	position: absolute;
+	width: 22px;
+	height: 22px;
+	right: 22px;
+	top: 12px;
+	display: none;
+	z-index: 5;
+}
+
+.select-item>span>img {
+	width: 100%;
+	height: 100%;
+}

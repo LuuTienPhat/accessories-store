@@ -1,0 +1,28 @@
+.error::before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #fb3f3f;
+    position: absolute;
+    top: -8px;
+    left: 10px;
+  }
+
+  .error {
+    cursor: pointer;
+    position: relative;
+    background-color: #fb3f3f;
+    padding: 2px 8px;
+    width: fit-content;
+    border-radius: 4px;
+    transform: translateY(-8px);
+    color: white;
+  }
+
+  .ordered-list {
+    height: 660px;
+    overflow-y: scroll;
+  }

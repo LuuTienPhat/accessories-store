@@ -1,0 +1,15 @@
+<% let contains = false%> 
+<% listFavorite.forEach(fav => { %> 
+  <% if (fav.product.id == pd.id) { %> 
+    <% contains = true%> 
+  <% } %> 
+<% }) %>
+
+<% if (contains == true) { %>
+  <i class="fa text-2xl fa-heart text-black text-2xl transition-colors"></i>
+<% } %> 
+<% if (contains == false) { %>
+  <i class="fa text-2xl fa-heart text-white hover:text-indigo-500 text-2xl transition-colors"></i>
+<% } %>
+
+  

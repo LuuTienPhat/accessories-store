@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./include/store-head'); -%>
+
+	<%- include('./include/store-styles'); -%>
+
+	<link rel="stylesheet" href="/styles/store/register.css">
+    
+  </head>
+
+  <body>
+    <%- include('./include/store-header'); -%>
+
+    <main class="main">
+      <div class="sign-up-form-container mx-auto my-10 border-2 border-gray-200 rounded-md">
+        <div class="flex">
+			<a href="<%=pagesPath.logInPagePath%>" class="switch-to-sign-in w-full py-2 relative text-xl text-indigo-400 text-center">
+				ĐĂNG NHẬP
+			</a>
+			<a href="<%=pagesPath.registerPagePath%>" class="switch-to-sign-up w-full py-2 relative text-xl text-indigo-400 text-center active-show-after">
+				ĐĂNG KÝ
+			</a>
+		</div>
+
+        <form action="<%=pagesPath.registerPagePath%>" class="w-full p-4" method="post">
+          <input type="text" name="firstname" id="firstName" class="w-full p-2 border-2 border-gray-300 rounded-md mb-3" placeholder="Họ (*)" />
+          <!-- <errors name="firstName" cssClass="error" element="div" /> -->
+          <input type="text" name="lastname" id="lastName" class="w-full p-2 border-2 border-gray-300 rounded-md mb-3" placeholder="Tên (*)" />
+          <!-- <errors name="lastName" cssClass="error" element="div" /> -->
+          <!-- <input type="date" name="dateofbirth" id="datePicker"
+					class="w-full p-2 border-2 border-gray-300 rounded-md mb-3"
+					placeholder="Ngày sinh (*)" />
+				<errors name="dateofbirth" cssClass="error" element="div" />  -->
+          <input type="text" name="phone" id="phone" class="w-full p-2 border-2 border-gray-300 rounded-md mb-3" placeholder="Điện thoại (*)" />
+          <!-- <errors name="telephone" cssClass="error" element="div" /> -->
+          <input type="text" name="email" id="email" class="w-full p-2 border-2 border-gray-300 rounded-md mb-3" placeholder="Email (*)" />
+          <!-- <errors name="email" cssClass="error" element="div" /> -->
+
+          <!-- <div class="select-item">
+					<select
+						class="w-full p-2 border-2 border-gray-300 rounded-md mb-3"
+						id="city-province" name="city">
+						<option value='0' label="Chọn Tỉnh/Thành Phố (*)" />
+						<option value='01' label="Thành phố Hà Nội" />
+						<option value='79' label="Thành phố Hồ Chí Minh" />
+						<option value='31' label="Thành phố Hải Phòng" />
+						<option value='48' label="Thành phố Đà Nẵng" />
+						<option value='92' label="Thành phố Cần Thơ" />
+						<option value='02' label="Tỉnh Hà Giang" />
+						<option value='04' label="Tỉnh Cao Bằng" />
+						<option value='06' label="Tỉnh Bắc Kạn" />
+						<option value='08' label="Tỉnh Tuyên Quang" />
+						<option value='10' label="Tỉnh Lào Cai" />
+						<option value='11' label="Tỉnh Điện Biên" />
+						<option value='12' label="Tỉnh Lai Châu" />
+						<option value='14' label="Tỉnh Sơn La" />
+						<option value='15' label="Tỉnh Yên Bái" />
+						<option value='17' label="Tỉnh Hoà Bình" />
+						<option value='19' label="Tỉnh Thái Nguyên" />
+						<option value='20' label="Tỉnh Lạng Sơn" />
+						<option value='22' label="Tỉnh Quảng Ninh" />
+						<option value='24' label="Tỉnh Bắc Giang" />
+						<option value='25' label="Tỉnh Phú Thọ" />
+						<option value='26' label="Tỉnh Vĩnh Phúc" />
+						<option value='27' label="Tỉnh Bắc Ninh" />
+						<option value='30' label="Tỉnh Hải Dương" />
+						<option value='33' label="Tỉnh Hưng Yên" />
+						<option value='34' label="Tỉnh Thái Bình" />
+						<option value='35' label="Tỉnh Hà Nam" />
+						<option value='36' label="Tỉnh Nam Định" />
+						<option value='37' label="Tỉnh Ninh Bình" />
+						<option value='38' label="Tỉnh Thanh Hóa" />
+						<option value='40' label="Tỉnh Nghệ An" />
+						<option value='42' label="Tỉnh Hà Tĩnh" />
+						<option value='44' label="Tỉnh Quảng Bình" />
+						<option value='45' label="Tỉnh Quảng Trị" />
+						<option value='46' label="Tỉnh Thừa Thiên Huế" />
+						<option value='49' label="Tỉnh Quảng Nam" />
+						<option value='51' label="Tỉnh Quảng Ngãi" />
+						<option value='52' label="Tỉnh Bình Định" />
+						<option value='54' label="Tỉnh Phú Yên" />
+						<option value='56' label="Tỉnh Khánh Hòa" />
+						<option value='58' label="Tỉnh Ninh Thuận" />
+						<option value='60' label="Tỉnh Bình Thuận" />
+						<option value='62' label="Tỉnh Kon Tum" />
+						<option value='64' label="Tỉnh Gia Lai" />
+						<option value='66' label="Tỉnh Đắk Lắk" />
+						<option value='67' label="Tỉnh Đắk Nông" />
+						<option value='68' label="Tỉnh Lâm Đồng" />
+						<option value='70' label="Tỉnh Bình Phước" />
+						<option value='72' label="Tỉnh Tây Ninh" />
+						<option value='74' label="Tỉnh Bình Dương" />
+						<option value='75' label="Tỉnh Đồng Nai" />
+						<option value='77' label="Tỉnh Bà Rịa - Vũng Tàu" />
+						<option value='80' label="Tỉnh Long An" />
+						<option value='82' label="Tỉnh Tiền Giang" />
+						<option value='83' label="Tỉnh Bến Tre" />
+						<option value='84' label="Tỉnh Trà Vinh" />
+						<option value='86' label="Tỉnh Vĩnh Long" />
+						<option value='87' label="Tỉnh Đồng Tháp" />
+						<option value='89' label="Tỉnh An Giang" />
+						<option value='91' label="Tỉnh Kiên Giang" />
+						<option value='93' label="Tỉnh Hậu Giang" />
+						<option value='94' label="Tỉnh Sóc Trăng" />
+						<option value='95' label="Tỉnh Bạc Liêu" />
+						<option value='96' label="Tỉnh Cà Mau" />
+					</select>
+				</div>
+				<errors name="city" cssClass="error" element="div" />
+				<div class="select-item district-town-select">
+					<select
+						class="w-full p-2 border-2 border-gray-300 rounded-md mb-3"
+						name="district" id="district-town">
+						<option value='0' label="Chọn Quận/Huyện (*)" />
+					</select>
+					<span><img
+						src="https://firebasestorage.googleapis.com/v0/b/qtv-music-shop.appspot.com/o/loading-icon%2Floading-icon-small.gif?alt=media&token=769f1086-0302-4e17-852e-e1409ec215b4"
+						alt="loading-icon"></span>
+				</div>
+				<errors name="district" cssClass="error" element="div" />
+				<div class="select-item ward-commune-select">
+					<select
+						class="w-full p-2 border-2 border-gray-300 rounded-md mb-3"
+						name="commune" id="ward-commune">
+						<option value='0' label="Chọn Phường/Xã (*)" />
+					</select>
+					<span><img
+						src="https://firebasestorage.googleapis.com/v0/b/qtv-music-shop.appspot.com/o/loading-icon%2Floading-icon-small.gif?alt=media&token=769f1086-0302-4e17-852e-e1409ec215b4"
+						alt="loading-icon"></span>
+				</div>
+				<errors name="commune" cssClass="error" element="div" /> -->
+
+          <!-- <select id="cityId" name="city"
+					class="w-full p-2 border-2 border-gray-300 rounded-md mb-3">
+					<option value="NONE" label="Tỉnh/Thành phố *" />
+					<option value="254" label="Hà Nội" />
+					<option value="255" label="Hồ Chí Minh" />
+					<option value="256" label="An Giang" />
+					<option value="257" label="Bà Rịa - Vũng Tàu" />
+					<option value="258" label="Bắc Ninh" />
+					<option value="259" label="Bắc Giang" />
+					<option value="260" label="Bình Dương" />
+					<option value="261" label="Bình Định" />
+					<option value="262" label="Bình Phước" />
+					<option value="263" label="Bình Thuận" />
+					<option value="264" label="Bến Tre" />
+					<option value="265" label="Bắc Cạn" />
+					<option value="266" label="Cần Thơ" />
+					<option value="267" label="Khánh Hòa" />
+					<option value="268" label="Thừa Thiên Huế" />
+					<option value="269" label="Lào Cai" />
+					<option value="270" label="Quảng Ninh" />
+					<option value="271" label="Đồng Nai" />
+					<option value="272" label="Nam Định" />
+					<option value="273" label="Cà Mau" />
+					<option value="274" label="Cao Bằng" />
+					<option value="275" label="Gia Lai" />
+					<option value="276" label="Hà Giang" />
+					<option value="277" label="Hà Nam" />
+					<option value="278" label="Hà Tĩnh" />
+					<option value="279" label="Hải Dương" />
+					<option value="280" label="Hải Phòng" />
+					<option value="281" label="Hòa Bình" />
+					<option value="282" label="Hưng Yên" />
+					<option value="283" label="Kiên Giang" />
+					<option value="284" label="Kon Tum" />
+					<option value="285" label="Lai Châu" />
+					<option value="286" label="Lâm Đồng" />
+					<option value="287" label="Lạng Sơn" />
+					<option value="288" label="Long An" />
+					<option value="289" label="Nghệ An" />
+					<option value="290" label="Ninh Bình" />
+					<option value="291" label="Ninh Thuận" />
+					<option value="292" label="Phú Thọ" />
+					<option value="293" label="Phú Yên" />
+					<option value="294" label="Quảng Bình" />
+					<option value="295" label="Quảng Nam" />
+					<option value="296" label="Quảng Ngãi" />
+					<option value="297" label="Quảng Trị" />
+					<option value="298" label="Sóc Trăng" />
+					<option value="299" label="Sơn La" />
+					<option value="300" label="Tây Ninh" />
+					<option value="301" label="Thái Bình" />
+					<option value="302" label="Thái Nguyên" />
+					<option value="303" label="Thanh Hóa" />
+					<option value="304" label="Tiền Giang" />
+					<option value="305" label="Trà Vinh" />
+					<option value="306" label="Tuyên Quang" />
+					<option value="307" label="Vĩnh Long" />
+					<option value="308" label="Vĩnh Phúc" />
+					<option value="309" label="Yên Bái" />
+					<option value="310" label="Đắk Lắk" />
+					<option value="311" label="Đồng Tháp" />
+					<option value="312" label="Đà Nẵng" />
+					<option value="313" label="Đắc Nông" />
+					<option value="314" label="Hậu Giang" />
+					<option value="315" label="Bạc Liêu" />
+					<option value="316" label="Điện Biên" />
+				</select>
+				<errors name="city" cssClass="error" element="div" />
+				<select id="districtId" name="district"
+					class="w-full p-2 border-2 border-gray-300 rounded-md mb-3">
+					<option value="None" label="Quận/ Huyện*" />
+				</select>
+				<errors name="district" cssClass="error" element="div" /> -->
+
+          <!-- <input type="text" name="specificAddress" id="specific-address"
+					class="w-full p-2 border-2 border-gray-300 rounded-md mb-3"
+					placeholder="Địa chỉ chi tiết (*)" />
+				<errors name="specificAddress" cssClass="error" element="div" /> -->
+
+          <!-- <input type="text" name="fullAddress" id="full-address"
+					class="w-full p-2 border-2 border-gray-300 rounded-md mb-3" /> -->
+          <input type="text" name="address" id="full-address" class="w-full p-2 border-2 border-gray-300 rounded-md mb-3" placeholder="Địa chỉ (*)" />
+          <!-- <errors name="fullAddress" cssClass="error" element="div" /> -->
+
+          <!-- <script>
+					const fullAddressInput = document.querySelector("#full-address");
+					const citySelect = document.querySelector("#city-province");
+					const districtSelect = document.querySelector("#district-town");
+					const communeSelect = document.querySelector("#ward-commune");
+					const specificInput = document.querySelector("#specific-address");
+					const updateFullAddress = function() {
+						fullAddressInput.value = specificInput.value + ", "
+								+ communeSelect.options[communeSelect.selectedIndex].innerHTML + ", "
+								+ districtSelect.options[districtSelect.selectedIndex].innerHTML + ", "
+								+ citySelect.options[citySelect.selectedIndex].innerHTML;
+					}
+					citySelect.addEventListener("change", updateFullAddress);
+					districtSelect.addEventListener("change", updateFullAddress);
+					communeSelect.addEventListener("change", updateFullAddress);
+					specificInput.addEventListener("input", updateFullAddress);
+				</script> -->
+		
+		  <input type="text" name="username" id="" class="w-full p-2 border-2 border-gray-300 rounded-md mb-3" placeholder="Tên đăng nhập (*)" />
+		  <!-- <errors name="username" cssClass="error" element="div" /> -->
+
+          <input type="password" name="password" id="" class="w-full p-2 border-2 border-gray-300 rounded-md mb-3" placeholder="Mật khẩu của bạn (*)" />
+          <!-- <errors name="password" cssClass="error" element="div" /> -->
+          <input type="password" name="confirmPassword" id="" class="w-full p-2 border-2 border-gray-300 rounded-md mb-3" placeholder="Nhập lại mật khẩu (*)" />
+          <!-- <errors name="confirmPassword" cssClass="error" element="div" /> -->
+          <div class="mb-2 flex justify-end">
+            <label for="showPassword" class="">
+				<input type="checkbox" class="mr-1" id="showPassword" />
+				Hiện mật khẩu
+			</label>
+          </div>
+          <button class="w-full px-4 py-2 font-bold bg-indigo-400 hover:bg-indigo-500 transition-colors text-white rounded-md">ĐĂNG KÝ</button>
+        </form>
+      </div>
+    </main>
+    <%- include('./include/store-footer') -%>
+  </body>
+
+  <%- include('./include/store-script') -%>
+  <!-- <script src="/scripts/store/check-out.js"></script> -->
+  <!-- <script src="./assets/js/sign-up.js"></script> -->
+  <script src="/scripts/store/register.js"></script>
+
+  <script type="text/javascript">
+    var a = document.getElementsByClassName("error");
+    for (var i = 0; i < a.length; i++) {
+      a[i].addEventListener("click", function (e) {
+        e.target.style.display = "none";
+      });
+    }
+    const show = document.getElementById("showPassword");
+    const inputPasswordField = document.querySelectorAll('input[type="password"]');
+    show.addEventListener("click", function (e) {
+      if (this.checked) {
+        for (var i = 0; i < inputPasswordField.length; i++) {
+          inputPasswordField[i].type = "text";
+        }
+      } else {
+        for (var i = 0; i < inputPasswordField.length; i++) {
+          inputPasswordField[i].type = "password";
+        }
+      }
+    });
+  </script>
+</html>

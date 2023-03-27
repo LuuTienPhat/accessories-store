@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Primary Meta Tags -->
+    <%- include('../../components/header/head'); -%>
+
+    <!-- Favicon -->
+    <%- include('../../components/header/favicon'); -%>
+
+    <!-- Styles -->
+    <%- include('../../components/header/styles'); -%>
+
+    <style>
+      .box {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Side Bar -->
+    <%- include('../../components/nav/sidebar'); -%>
+
+    <main class="content">
+      <!-- header bar -->
+      <%- include('../../components/nav/navbar'); -%>
+
+      <!-- breadcrumbs -->
+      <%- include('../../components/nav/breadcrumbs'); -%>
+
+      <div class="row">
+        <div class="col-12 col-xl-12">
+          <div class="card card-body border-0 shadow">
+            <h2 class="h5 mb-4"><%=vocabulary.word%> Information</h2>
+            <form action="<%=originalUrl%>" method="POST" class="needs-validation" novalidate>
+              <div class="row mb-3">
+                <div class="col-md-2">
+                  <div>
+                    <label for="id">#</label>
+                    <input class="form-control" id="id" name="id" type="text" value="<%=vocabulary.id%>" readonly="true" />
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <div>
+                    <label for="name">Word</label>
+                    <div class="input-group">
+                      <input name="word" class="form-control" id="word" type="text" value="<%=vocabulary.word%>" />
+                    </div>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please provide a name.</div>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <div>
+                    <label for="name">Pronunciation</label>
+                    <div class="input-group">
+                      <input name="pronunciation" class="form-control" id="name" type="text" value="<%=vocabulary.pronunciation%>" />
+                    </div>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please provide a name.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <button class="btn btn-gray-800 mt-2 animate-up-2 d-inline-flex align-items-center" type="submit">
+                  <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="row mt-4">
+            <div class="col-6">
+              <div class="card card-body border-0 shadow table-wrapper table-responsive overflow-hidden box">
+                <div class="btn-toolbar mb-3 d-flex justify-content-between">
+                  <h2 class="h5">Meanings</h2>
+
+                  <a class="btn btn-sm btn-warning d-inline-flex align-items-center" id="btn-add-meaning">
+                    <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>
+                    New
+                  </a>
+                </div>
+
+                <table class="table table-hover" id="table-meaning">
+                  <thead class="thead-dark">
+                    <tr>
+                      <!-- <th class="border-gray-200 rounded-start">#</th> -->
+                      <th class="border-gray-200">Part Of Speech</th>
+                      <!-- <th class="border-gray-200">Hình ảnh</th> -->
+                      <th class="border-gray-200">Meaning</th>
+                      <!-- <th class="border-gray-200">Examples</th> -->
+                      <!-- <th class="border-gray-200">Ngày thêm</th> -->
+                      <th class="border-gray-200 rounded-end"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Item -->
+                    <% vocabulary.meanings.forEach(function(item){ %>
+                    <tr data-id="<%=item.id%>">
+                      <td data-id="<%=item.id%>" class="d-none">
+                        <a href="<%=originalUrl%>/<%=item.partOfSpeech.id%>" class="fw-bold"><%=item.id%></a>
+                      </td>
+                      <td><span class="fw-normal"><%=item.partOfSpeech.name%></span></td>
+                      <!-- <td><img src="${category.image}" width="100" height="100" alt="${category.name}" /></td> -->
+                      <td><span class="fw-normal text-wrap"><%=item.meaning%></span></td>
+                      <!-- <td>
+                      <span class="fw-normal text-wrap">
+                        <fmt:setLocale value="vi_VN" scope="session" />
+                        <fmt:formatDate value="${category.dateAdded}" pattern="dd/MM/yyyy" />
+                      </span>
+                    </td> -->
+                      <td class="text-center">
+                        <div class="btn-group">
+                          <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <svg class="icon icon-xxs" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg>
+
+                            <span class="visually-hidden">Toggle Dropdown</span>
+                          </button>
+                          <div class="dropdown-menu py-0">
+                            <a class="dropdown-item rounded-top" id="btn-add">
+                              <i class="bi bi-eye-fill dropdown-icon text-gray-400 me-2 icon-sm"></i>
+                              View
+                            </a>
+
+                            <a class="dropdown-item text-warning" data-id="<%=item.id%>" id="btn-edit-meaning">
+                              <i class="bi bi-pencil-square dropdown-icon me-2"></i>
+                              Edit
+                            </a>
+
+                            <a id="btnDeleteMeaning" class="dropdown-item text-danger rounded-bottom" data-bs-toggle="modal" data-bs-target="#modal-warning-meaning" data-id="<%=item.id%>">
+                              <i class="bi bi-trash2-fill dropdown-icon me-2"></i>
+                              Delete
+                            </a>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <% }); %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="card card-body border-0 shadow table-wrapper table-responsive overflow-hidden box">
+                <div class="btn-toolbar mb-3 d-flex justify-content-between">
+                  <h2 class="h5">Examples</h2>
+
+                  <a class="btn btn-sm btn-warning d-inline-flex align-items-center d-none" id="btn-add-example">
+                    <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>
+                    New
+                  </a>
+                </div>
+
+                <table class="table table-hover" id="table-example">
+                  <thead class="thead-dark">
+                    <tr>
+                      <!-- <th class="border-gray-200 rounded-start">#</th> -->
+                      <th class="border-gray-200">Example</th>
+                      <!-- <th class="border-gray-200">Hình ảnh</th> -->
+                      <th class="border-gray-200">Example Meaning</th>
+                      <!-- <th class="border-gray-200">Examples</th> -->
+                      <!-- <th class="border-gray-200">Ngày thêm</th> -->
+                      <th class="border-gray-200 rounded-end"></th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer -->
+      <%- include('../../components/footer/footer'); -%>
+    </main>
+
+    <!-- Scripts -->
+    <%- include('../../components/footer/script'); -%>
+
+    <!-- Modal -->
+    <%- include('./meaningModal', {vocabulary, modal, v}); -%> <%- include('./exampleModal', {vocabulary, modal, v}); -%>
+
+    <!-- Notyf -->
+    <%- include('../../components/footer/notyf'); -%>
+
+    <script>
+      (function () {
+        "use strict";
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll(".needs-validation");
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms).forEach(function (form) {
+          form.addEventListener(
+            "submit",
+            function (event) {
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+
+              form.classList.add("was-validated");
+            },
+            false,
+          );
+        });
+      })();
+    </script>
+
+    <script>
+      
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<div class="p-4 pt-0 border-2 mr-4 border-gray-200 user-info-nav">
+    <div class="my-2 mt-3 text-center text-indigo-500 text-xl font-bold">
+        <%#=user.firstname%> <%#=customerEntity.lastname%>
+        <% if (customer != null) { %>
+            <%=customer.getFullName()%>
+        <% } %>
+    </div>
+    <div class="mb-1">
+      <span href="<%=pagesPath.userPagePath%>" class="<%=req.originalUrl == pagesPath.userPagePath ? 'text-indigo-500' : ''%> transition-colors">Thông tin tài khoản</span>
+    </div>
+    <div class="mb-1">
+      <a href="<%=pagesPath.changePasswordPagePath%>" class="<%=req.originalUrl == pagesPath.changePasswordPagePath ? 'text-indigo-500' : ''%> hover:text-indigo-500 transition-colors">Đổi mật khẩu</a>
+    </div>
+    <div class="mb-1">
+      <a href="<%=pagesPath.cartPagePath%>" class="<%=req.originalUrl == pagesPath.cartPagePath ? 'text-indigo-500' : ''%> hover:text-indigo-500 transition-colors">Giỏ hàng</a>
+    </div>
+    <div class="mb-1">
+      <a href="<%=pagesPath.favoriteProductsPagePath%>" class="<%=req.originalUrl == pagesPath.favoriteProductsPagePath ? 'text-indigo-500' : ''%> hover:text-indigo-500 transition-colors">Sản phẩm đã thích</a>
+    </div>
+    <div class="mb-1">
+      <a href="<%=pagesPath.orderHistoryPagePath%>" class="<%=req.originalUrl == pagesPath.orderHistoryPagePath ? 'text-indigo-500' : ''%> hover:text-indigo-500 transition-colors">Lịch sử mua hàng</a>
+    </div>
+    <div class="mb-1">
+      <a href="<%=pagesPath.logOutPagePath%>" class="hover:text-indigo-500 transition-colors">Đăng xuất</a>
+    </div>
+  </div>

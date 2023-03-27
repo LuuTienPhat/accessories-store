@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%=title%></title>
+    <!-- <title>Thanh Toán</title> -->
+    <%- include('./include/store-head'); -%>
+    
+    <%- include('./include/store-styles'); -%>
+
+    <link type="text/css" href="/styles/store/checkout" rel="stylesheet" />
+  </head>
+
+  <body>
+    <%- include('./include/store-header'); -%>
+    <main class="main">
+      <div class="main__new-product px-32 mb-12 mt-6">
+        <div class="mb-5 font-bold text-xl">
+          <a href="<%pagesPath.cartPagePath%>" class="hover:text-indigo-500 transition-colors">Giỏ hàng</a> 
+          > <span class="text-indigo-500">Thanh toán</span>
+        </div>
+        <div class="">
+          <form action="<%=pagesPath.checkoutPagePath%>" class="w-full flex flex-wrap check-out-wrapper" method="post">
+            <div class="w-full flex-1 mr-2">
+              <div class=" border-2 border-gray-200 mb-2">
+                <div class="my-3 px-4 font-bold">
+                  1. THÔNG TIN NGƯỜI NHẬN
+                </div>
+                <div class="px-4">
+                  <hr class="" />
+                </div>
+                <div class="p-4">
+                  <div class="flex input-wrapper">
+                    <label for="" class="mr-3">Họ tên: <span class="text-red-500">(*)</span> </label>
+                    <div class="w-full">
+                      <input type="text" name="fullname" id="" class="w-full p-2 border-2 border-gray-300 rounded-md mb-3" placeholder="Họ (*)" 
+                        value="<%=customer.getFullName()%>" />
+                      <!-- <errors name="shipName" cssClass="error" element="div" /> -->
+                    </div>
+                  </div>
+
+                  <div class="flex input-wrapper">
+                    <label for="" class="mr-3">Điện thoại: <span class="text-red-500">(*)</span></label>
+                    <div class="w-full">
+                      <input type="text" name="phone" id="" class="w-full p-2 border-2 border-gray-300 rounded-md mb-3" placeholder="Điện thoại (*)" value="<%customer.phone%>" />
+                      <!-- <errors name="shipPhone" cssClass="error" element="div" /> -->
+                    </div>
+                  </div>
+                  <div class="flex input-wrapper">
+                    <label for="" class="mr-3">Email: <span class="text-red-500">(*)</span></label>
+                    <div class="w-full">
+                      <input type="text" name="email" id="" class="w-full p-2 border-2 border-gray-300 rounded-md mb-3" placeholder="Email (*)" value="<%customer.email%>" />
+                      <!-- <errors name="shipEmail" cssClass="error" element="div" /> -->
+                    </div>
+                  </div>
+                  <!-- <div class="flex input-wrapper">
+                                  <label for="" class="mr-3">Tỉnh/Thành phố: <span
+                                          class="text-red-500">(*)</span></label>
+                                  <div class="w-full">
+                                      <select id="cityId" name="shipCity"
+                                          class="w-full p-2 border-2 border-gray-300 rounded-md mb-3">
+                                          <option value="NONE" label="Tỉnh/Thành phố *" />
+                                          <option value="254" label="Hà Nội" />
+                                          <option value="255" label="Hồ Chí Minh" />
+                                          <option value="256" label="An Giang" />
+                                          <option value="257" label="Bà Rịa - Vũng Tàu" />
+                                          <option value="258" label="Bắc Ninh" />
+                                          <option value="259" label="Bắc Giang" />
+                                          <option value="260" label="Bình Dương" />
+                                          <option value="261" label="Bình Định" />
+                                          <option value="262" label="Bình Phước" />
+                                          <option value="263" label="Bình Thuận" />
+                                          <option value="264" label="Bến Tre" />
+                                          <option value="265" label="Bắc Cạn" />
+                                          <option value="266" label="Cần Thơ" />
+                                          <option value="267" label="Khánh Hòa" />
+                                          <option value="268" label="Thừa Thiên Huế" />
+                                          <option value="269" label="Lào Cai" />
+                                          <option value="270" label="Quảng Ninh" />
+                                          <option value="271" label="Đồng Nai" />
+                                          <option value="272" label="Nam Định" />
+                                          <option value="273" label="Cà Mau" />
+                                          <option value="274" label="Cao Bằng" />
+                                          <option value="275" label="Gia Lai" />
+                                          <option value="276" label="Hà Giang" />
+                                          <option value="277" label="Hà Nam" />
+                                          <option value="278" label="Hà Tĩnh" />
+                                          <option value="279" label="Hải Dương" />
+                                          <option value="280" label="Hải Phòng" />
+                                          <option value="281" label="Hòa Bình" />
+                                          <option value="282" label="Hưng Yên" />
+                                          <option value="283" label="Kiên Giang" />
+                                          <option value="284" label="Kon Tum" />
+                                          <option value="285" label="Lai Châu" />
+                                          <option value="286" label="Lâm Đồng" />
+                                          <option value="287" label="Lạng Sơn" />
+                                          <option value="288" label="Long An" />
+                                          <option value="289" label="Nghệ An" />
+                                          <option value="290" label="Ninh Bình" />
+                                          <option value="291" label="Ninh Thuận" />
+                                          <option value="292" label="Phú Thọ" />
+                                          <option value="293" label="Phú Yên" />
+                                          <option value="294" label="Quảng Bình" />
+                                          <option value="295" label="Quảng Nam" />
+                                          <option value="296" label="Quảng Ngãi" />
+                                          <option value="297" label="Quảng Trị" />
+                                          <option value="298" label="Sóc Trăng" />
+                                          <option value="299" label="Sơn La" />
+                                          <option value="300" label="Tây Ninh" />
+                                          <option value="301" label="Thái Bình" />
+                                          <option value="302" label="Thái Nguyên" />
+                                          <option value="303" label="Thanh Hóa" />
+                                          <option value="304" label="Tiền Giang" />
+                                          <option value="305" label="Trà Vinh" />
+                                          <option value="306" label="Tuyên Quang" />
+                                          <option value="307" label="Vĩnh Long" />
+                                          <option value="308" label="Vĩnh Phúc" />
+                                          <option value="309" label="Yên Bái" />
+                                          <option value="310" label="Đắk Lắk" />
+                                          <option value="311" label="Đồng Tháp" />
+                                          <option value="312" label="Đà Nẵng" />
+                                          <option value="313" label="Đắc Nông" />
+                                          <option value="314" label="Hậu Giang" />
+                                          <option value="315" label="Bạc Liêu" />
+                                          <option value="316" label="Điện Biên" />
+                                      </select>
+                                      <errors name="shipCity" cssClass="error" element="div" />
+                                  </div>
+
+                              </div>-->
+
+                  <!-- <div class="flex input-wrapper">
+                                  <label for="" class="mr-3">Quận/ Huyện: <span class="text-red-500">(*)</span></label>
+                                  <div class="w-full">
+                                      <select id="districtId" name="district"
+                                          class="w-full p-2 border-2 border-gray-300 rounded-md mb-3">
+                                          <option value="None" label="Quận/ Huyện*" />
+                                      </select>
+                                      <errors name="district" cssClass="error" element="div" />
+                                  </div>
+
+
+                              </div> -->
+
+                  <div class="flex input-wrapper">
+                    <label for="" class="mr-3">Địa chỉ: <span class="text-red-500">(*)</span></label>
+                    <div class="w-full">
+                      <input type="text" name="address" id="" class="w-full p-2 border-2 border-gray-300 rounded-md mb-3" placeholder="Địa chỉ (*)" value="<%customer.address%>" />
+                      <!-- <errors name="shipAddress" cssClass="error" element="div" /> -->
+                    </div>
+                  </div>
+                  <div class="flex input-wrapper">
+                    <label for="" class="mr-3"
+                      >Ghi chú:
+                      <!-- <span class="text-red-500">(*)</span> -->
+                    </label>
+                    <div class="w-full">
+                      <textarea type="text" name="note" id="" class="w-full p-2 border-2 border-gray-300 rounded-md mb-3" placeholder="Ghi chú (không bắt buộc)" value=""></textarea>
+                      <!-- <errors name="shipNote" cssClass="error" element="div" /> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="border-2 border-gray-200 ">
+                <div class="my-3 px-4 font-bold">
+                  2. THANH TOÁN
+                </div>
+                <div class="px-4">
+                  <hr class="" />
+                </div>
+                <div class="p-4">
+                  <div class="flex-start input-wrapper">   
+                    <div class="w-full">
+                      <input type="checkbox" name="method" id="" class="p-2 mr-2 border-2 border-gray-300 rounded-md mb-3" checked = "true"/>
+                      <!-- <errors name="shipName" cssClass="error" element="div" /> -->
+                      <label for="" class="mr-3">COD: Thanh toán khi nhận hàng</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-4">
+                  <div id="paypal-button-container"></div>
+                </div>
+                
+              </div>
+            </div>
+
+            <div class="border-2 border-gray-200 w-full flex-1">
+              <div class="my-3 px-4 font-bold">3. THÔNG TIN GIỎ HÀNG</div>
+              <div class="px-4">
+                <hr class="" />
+              </div>
+              <div class="w-full p-4">
+                <table class="cart-list__table mb-4">
+                  <thead>
+                    <tr class="card-list__table-header font-bold">
+                      <th>Tên</th>
+                      <th>Số lượng</th>
+                      <th>Thành tiền</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% carts.forEach(c => { %>
+                    <tr class="card-list__table-item">
+                      <!-- desc = tên sản phẩm + màu sắc + kích cỡ (nếu có) -->
+                      <td class="card-list__table-desc" style="text-align: left !important">
+                        <input type="text" name="productId" value="<%=c.product.id%>" class="hidden" />
+                        <input type="text" name="cartId" value="<%=c.id%>" class="hidden" />
+                        <input type="text" name="quantity" value="<%=c.quantity%>" class="hidden" />
+                        <a href="<%=pagesPath.productPagePath%>/<%=c.product.id%>" class="hover:text-indigo-500">
+                          <%=c.product.name%>
+                        </a>
+                        <br />
+                        <div class="cart-list__price">
+                          Đơn giá:
+                          <span class="font-bold">
+                            <!-- <fmt:setLocale
+															value="vi_VN" scope="session" /> 
+															<fmt:formatNumber
+															value="<#%c.product.price%>" type="currency" /> -->
+                              <%=Money(c.product.price) %> 
+                          </span>
+                        </div>
+                      </td>
+                      <td class="cart-list__quantity"><%=c.quantity%></td>
+                      <td class="card-list__total font-bold">
+                        <!-- <fmt:setLocale
+													value="vi_VN" scope="session" /> 
+													<fmt:formatNumber
+													value="<#%c.quantity*c.product.price%>" type="currency" /> -->
+                          <%=Money(c.quantity * c.product.price) %> 
+                      </td>
+                    </tr>
+                    <% }) %>
+                    <!-- <c:forEach var="c" items="<%#cartDetails%>">
+										
+
+									</c:forEach> -->
+                  </tbody>
+                </table>
+                <div class="flex justify-between border-t my-1 py-2">
+                  <span class="">Tạm tính</span>
+                  <span class="font-bold">
+                    <!-- <fmt:setLocale
+										value="vi_VN" scope="session" /> 
+										<fmt:formatNumber
+										value="<%#cartDetailsTotal%>" type="currency" /> -->
+
+                    <% var totalPrice = carts.reduce((total, currentValue) => total + (Number(currentValue.quantity) * Number(currentValue.product.price)), 0)%>
+                    <%= Money(totalPrice) %>
+                  </span>
+                </div>
+                <div class="flex justify-between border-t my-1 py-2">
+                  <span class="">Phí vận chuyển</span>
+                  <span class="font-bold">
+                    <!-- <fmt:setLocale
+										value="vi_VN" scope="session" /> 
+										<fmt:formatNumber
+										value="0" type="currency" /> -->
+
+                    <%=Money(0) %>
+                  </span>
+                </div>
+                <div class="flex justify-between border-t my-1 py-2">
+                  <span class="">Tổng cộng</span>
+                  <span class="font-bold">
+                    <%=Money(totalPrice + 0) %>
+                    <!-- <fmt:setLocale
+										value="vi_VN" scope="session" /> <fmt:formatNumber
+										value="<%#cartDetailsTotal + 0%>" type="currency" /> -->
+                  </span>
+                </div>
+              </div>
+            </div>
+            
+
+            <div class="w-full flex justify-end">
+              <button class="px-4 py-2 my-2 font-bold bg-indigo-400 hover:bg-indigo-500 transition-colors text-white rounded-md">Thanh toán</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <%- include('./include/store-footer'); -%>
+  </body>
+  <%- include('./include/store-script'); -%>
+  <script src="/scripts/store/check-out.js"></script>
+  <!-- <script src="https://www.paypal.com/sdk/js?client-id=AQFbP_ocF7B42xWvW6ROKNO7uLLx2c1gv7gKSPj9JoG7S4DQn9wtN4VBIls7CsJHwIZJrscIUsMmYSfp"></script>
+  <script>
+    paypal.Buttons({
+      createOrder: function(data, actions) {
+        return actions.order.createOrder({
+          intent: 'CAPTURE',
+          payer: {
+            name: {
+              given_name: "Phat",
+              surname : "Luu",
+
+            },
+            address: {
+              address_line_1: "",
+              address_line_2: "",
+              admin_area_1: "",
+              admin_area_2: "",
+              postal_code: "",
+              country_code: ""
+            },
+
+            email_address: "",
+
+            phone : {
+              phone_type: "MOBILE",
+              phone_number: {
+                national_number: "",
+              }
+            },
+
+            purchase_units: [{
+              amount: {
+                value: "99.50",
+                currency_code: "USD",
+              }
+            }]
+          }
+        });
+      },
+
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          console.log(details);
+
+          orderId = details.id;
+          status = details.status;
+
+          alert("Thanks for your payment!");
+        });
+      },
+
+      onCancel: function(data) {
+        alert("Payment cancelled");
+      },
+
+      onError: function(err) {
+        alert("Something wrong with your address information that prevent checkout");
+      }
+    }).render("#paypal-button-container");
+  </script> -->
+
+  <!-- <script type="text/javascript">
+	var a = document.getElementsByClassName("error");
+	for (var i = 0; i < a.length; i++) {
+		a[i].addEventListener("click", function(e) {
+			e.target.style.display = "none";
+		})
+	}
+</script> -->
+</html>

@@ -1,0 +1,65 @@
+<!-- pagination -->
+<!-- <div class="card-footer px-3 border-0 d-flex flex-column flex-lg-row align-items-center justify-content-between"> -->
+    <!-- hiển thị phân trang nếu có trang -->
+    <% if(pagination.pages > 0) { %>
+    <nav aria-label="Page navigation">
+      <ul class="inline-flex font-bold my-3">
+        <!-- FIRST ITEM -->
+        <% if(pagination.current == 1 || pagination.current == 0) { %>
+        <li class="page-item hidden">
+          <a class="h-10 px-5 py-2 text-indigo-400 transition-colors duration-150 bg-white border border-indigo-400 focus:shadow-outline hover:bg-indigo-200" href="<%=pagesPath.productPagePath%>">Trước</a>
+        </li>
+        <% } else { %> 
+        <li class="page-item">
+          <a class="h-10 px-5 py-2 text-indigo-400 transition-colors duration-150 bg-white border border-indigo-400 focus:shadow-outline hover:bg-indigo-200" href="<%=pagesPath.productPagePath%>">Trước</a>
+        </li>
+        <% } %>
+
+        <!-- ITEMS  -->
+        <% var i = (Number(pagination.current) > 3 ? Number(pagination.current) - 2 : 1) %> <% if(i !== 1) { %>
+        <li class="page-item hidden">
+          <a class="h-10 px-5 py-2 text-indigo-400 transition-colors duration-150 bg-white border border-indigo-400 focus:shadow-outline hover:bg-indigo-200" href="#">...</a>
+        </li>
+        <% } %> 
+        <% for(; i <= (Number(pagination.current) + 2) && i <= pagination.pages; i++) { %> 
+            <% if(i == pagination.current) { %>
+                <li class="page-item active">
+                <a class="h-10 px-5 py-2 text-white transition-colors duration-150 bg-indigo-400 border border-indigo-400 focus:shadow-outline" href="<% if(i == 1) { %><%=pagesPath.productPagePath%><% } else { %><%=pagesPath.productPagePath%>?p=<%= i %><% } %>"> <%= i %> </a>
+                </li>
+            <% } else { %>
+        <li class="page-item">
+          <a class="h-10 px-5 py-2 text-indigo-400 transition-colors duration-150 bg-white border border-indigo-400 focus:shadow-outline hover:bg-indigo-200" href="<% if(i == 1) { %><%=pagesPath.productPagePath%><% } else { %><%=pagesPath.productPagePath%>?p=<%= i %><% } %>"> <%= i %> </a>
+        </li>
+        <% } %> <% if (i == Number(pagination.current) + 2 && i < pagination.pages) { %>
+        <li class="page-item hidden">
+          <a class="h-10 px-5 py-2 text-indigo-400 transition-colors duration-150 bg-white border border-indigo-400 focus:shadow-outline hover:bg-indigo-200" href="#">...</a>
+        </li>
+        <% } %> <% } %>
+
+        <!-- LAST ITEM -->
+        <% if(pagination.current == pagination.pages) { %> 
+        <li class="page-item hidden">
+          <a class="h-10 px-5 py-2 text-indigo-400 transition-colors duration-150 bg-white border border-indigo-400 focus:shadow-outline hover:bg-indigo-200 rounded-r-lg" href="#"> Sau </a>
+        </li>
+        <% } else { %>
+        <li class="page-item">
+          <a class="h-10 px-5 py-2 text-indigo-400 transition-colors duration-150 bg-white border border-indigo-400 focus:shadow-outline hover:bg-indigo-200 rounded-r-lg" href="<%=pagesPath.productPagePath%>?p=<%= pagination.pages %>"> Sau </a>
+        </li>
+        <% } %>
+      </ul>
+    </nav>
+    <% } %>
+
+    <!-- <div class="fw-normal small mt-4 mt-lg-0">
+		<%# if(Number(pagination.current) * Number(pagination.perPage) >= Number(pagination.total)) {%> 
+			    Showing<b> <%#-  Number(pagination.total) %></b> out of <b>
+            <%#=pagination.total%></b>
+
+          <%# } else { %>
+
+					Showing<b> <%#- Number(pagination.current) * Number(pagination.perPage) %></b> out of <b>
+            <%#=pagination.total%></b>
+
+			<%# } %> 
+		</div> -->
+  <!-- </div> -->

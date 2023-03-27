@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- <title>Thông tin cá nhân</title> -->
+    <%- include('./include/store-head'); -%>
+
+    <%- include('./include/store-styles'); -%>
+
+	<link rel="stylesheet" href="/styles/store/register.css">
+  </head>
+
+<body>
+	<%- include('./include/store-header'); -%>
+	
+	<main class="main">
+		<div class="main__new-product section px-32 my-6">
+		<!-- <div class="section__heading mb-8">
+				<div class="product-navigation font-bold mb-5">
+					<h3 class="text-indigo-500 font-bold text-xl">Thể loại: ${pagedListHolder.pageList[0].category.name}</h3>
+					
+				</div>
+				<hr class="border-none bg-indigo-500" style="height: 1px;">
+				<c:if test="${pagedListHolder.pageList.size()==0}">
+							<p class="mt-5">Chưa có sản phẩm thuộc thể loại này.</p>
+							<p class="mb-2">Nhấn vào <a href="${applicationScope.storeIndexPage}"
+							class="inline-block font-bold text-indigo-500 hover:text-indigo-300 transition-colors">đây</a> để quay lại trang chủ.</p>
+						</c:if>
+		</div> -->
+			
+			<div class="new-product__list flex flex-wrap">
+				<!-- <jsp:useBean id="pagedListHolder" scope="request"
+					type="org.springframework.beans.support.PagedListHolder" />
+				<c:url
+					value="store/category/${pagedListHolder.pageList[0].category.id}/"
+					var="pagedLink">
+					<c:param name="p" value="~" />
+				</c:url> -->
+
+				<%- include('./include/product-list'); -%>
+
+			</div>
+			<!-- <div>
+				<tg:paging pagedListHolder="${pagedListHolder}"
+					pagedLink="${pagedLink}" />
+			</div> -->
+		</div>
+	</main>
+	<%- include('./include/store-footer') -%>
+  </body>
+
+  <%- include('./include/store-script') -%>
+
+</html>

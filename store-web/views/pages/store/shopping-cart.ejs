@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./include/store-head'); -%>
+
+    <%- include('./include/store-styles'); -%>
+  </head>
+  <body>
+    <%- include('./include/store-header'); -%>
+    <main class="main">
+      <div class="cart-list__container main__new-product px-32 my-6">
+        <h3 class="text-indigo-500 font-bold mb-4 text-xl">GIỎ HÀNG CỦA BẠN</h3>
+        <hr class="border-none bg-indigo-500 mb-4" style="height: 1px" />
+
+        <% if (carts.length == 0) { %>
+          <p>Bạn không có sản phẩm nào trong giỏ hàng.</p>
+          <p class="mb-2">
+            <a href="<%=pagesPath.indexPagePath%>" class="inline-block font-bold text-indigo-500 hover:text-indigo-300 transition-colors">
+              Quay lại trang chủ
+            </a> để mua sắm.
+          </p>
+        <% } else { %>
+        <!-- <form action="store/shopping-cart/update" method="post"> -->
+        <form action="<%=pagesPath.cartPagePath%>/edit" method="post">
+          <table class="cart-list__table mb-4">
+            <thead>
+              <tr class="card-list__table-header font-bold">
+                <th>Sản phẩm</th>
+                <th>Mô tả</th>
+                <th>Đơn giá</th>
+                <th>Số lượng</th>
+                <th>Tổng</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% carts.forEach(c => { %>
+              <tr class="card-list__table-item">
+                <input type="text" name="productId" value="<%=c.product.id%>" class="hidden" />
+                <input type="text" name="cartId" value="<%=c.id%>" class="hidden" />
+                <td class="card-list__table-image">
+                  <a href="<%=pagesPath.productPagePath%>/<%=c.product.id%>" class="table-image__container">
+                    <img src="<%=pagesPath.apiImagePath%>/<%=c.product.id%>/<%=c.product.images[0].path%>" alt="<%=c.product.id%>" />
+                    <!-- alt=""> -->
+                  </a>
+                </td>
+                <!-- desc = tên sản phẩm + màu sắc + kích cỡ (nếu có) -->
+                <td class="card-list__table-desc" style="text-align: left">
+                  <a href="<%=pagesPath.productPagePath%>/<%=c.product.id%>" class="hover:text-indigo-500">
+                    <%=c.product.name%>
+                  </a>
+                  <!-- <div>Tồn kho: <%#=c.product.quantity%></div> -->
+                </td>
+                <td class="cart-list__price font-bold">
+                   <%=Money(c.product.price) %> 
+                  </td>
+                <td class="cart-list__quantity">
+                  <div class="input-group flex align-items-center">
+                    <button class="button-minus">-</button>
+                    <input type="number" step="1" max="<%=c.product.quantity%>" min="1" value="<%=c.quantity%>" name="quantity" class="quantity-field" />
+
+                    <button class="button-plus">+</button>
+                  </div>
+                </td>
+                <td class="card-list__total font-bold">
+                  <%=Money(c.quantity * c.product.price) %> 
+                </td>
+                <td class="card-list__action">
+                  <a href="<%=pagesPath.cartPagePath%>/delete/<%=c.id%>" class="hover:text-indigo-500">
+                    Xóa</a>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+          <div class="flex justify-end mb-4">
+            <button class="px-4 py-2 font-bold bg-indigo-400 hover:bg-indigo-500 transition-colors text-white rounded-md" type="submit">Cập nhật</button>
+            <!-- <a href="store/shopping-cart/delete-all"
+						class="ml-2 px-4 py-2 font-bold bg-indigo-400 hover:bg-indigo-500 transition-colors text-white rounded-md"
+						>Xóa tất cả</a> -->
+            <a href="<%=pagesPath.checkoutPagePath%>" class="ml-2 px-4 py-2 font-bold bg-indigo-400 hover:bg-indigo-500 transition-colors text-white rounded-md">Thanh toán</a>
+          </div>
+        </form>
+        <!-- <p>Hỗ trợ ship 20k cho đơn hàng từ 300k nội thành HN, HCM</p>
+        <p>Hỗ trợ ship 30k cho đơn hàng từ 500k toàn quốc</p>
+        <p>Đơn hàng trên website được xử lý trong giờ hành chính</p> -->
+
+        <h3 class="text-right text-indigo-400 mt-4 text-3xl font-bold">
+          Tổng: <span class="cart-total">000</span>
+        </h3>
+        <% } %>
+
+        <% if (listRecentViewProducts != null && listRecentViewProducts.length > 0 ) { %>
+          <div class="section__heading mb-8 mt-16">
+            <h3>
+              <span href="#" class="<!-- hover:text-indigo-400 --> transition-colors text-3xl font-bold">
+                Các sản phẩm đã xem
+              </span>
+            </h3>
+          </div>
+
+          <div class="visited-product flex flex-wrap">
+            <%- include('./include/recent-product-list') -%> 
+          </div>
+        <% } %>
+      </div> 
+    </main>
+
+    <%- include('./include/store-footer') -%>
+    <!-- <script src="./assets/js/cart.js"></script> -->
+  </body>
+  <%- include('./include/store-script') -%>
+  <script src="/scripts/store/cart.js"></script>
+  </html>
