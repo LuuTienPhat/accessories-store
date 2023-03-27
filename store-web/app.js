@@ -21,34 +21,16 @@ const viewsDir = path.join(__dirname, "views");
 
 const PORT = process.env.PORT || 8000;
 
-//const indexRouter = require("./routes/account.route");
-// const usersRouter = require("./routes/account");
-// const accountRouter = require("./routes/account");
-//const dashboardRouter = require("./routes/dashboard.route");
-// const vocabularyRouter = require("./routes/vocabulary.route");
-//const partOfSpeechRouter = require("./routes/partOfSpeech.route");
-// const feedbackRouter = require("./routes/feedback.route");
-// const mailRouter = require("./routes/mail.route");
-// const profileRouter = require("./routes/profile.route");
-// const categoryRouter = require("./routes/category.route");
-// const productRouter = require("./routes/product.route");
-// const orderRouter = require("./routes/order.route");
-// const userRouter = require("./routes/user.route");
-// const invoiceRouter = require("./routes/invoice.route");
 const apiRouter = require("./routes/api.route");
 
 const storeRoute = require("./routes/store.route");
 
-const store2Route = require("./routes/store2.route");
+const authRoute = require("./routes/auth.route");
 
 const storeController = require("./controllers/store.controller");
 
 const auth = require("./middlewares/auth.middleware");
-const sidebar = require("./middlewares/sidebar.middleware");
 const staticFunc = require("./staticFunction");
-const { logOut } = require("./controllers/account.controller");
-const { default: axios } = require("axios");
-
 
 
 // view engine setup
@@ -80,19 +62,6 @@ app.use(
 );
 app.use(flash({ sessionKeyName: "flashMessage" }));
 
-//const absoluteDashboardPath = `${static.ADMIN_PATH}${static.dashboardPath}`;
-//const absoluteVocabularyPath = `${static.ADMIN_PATH}${static.VOCABULARY_PATH}`;
-//const absolutePartOfSpeechPath = `${static.ADMIN_PATH}${static.partOfSpeechPath}`;
-// const absoluteFeedbackPath = `${static.ADMIN_PATH}${static.feedbackPath}`;
-// const absoluteMailPath = `${static.ADMIN_PATH}${static.MAIL_PATH}`;
-// const absoluteProfilePath = `${static.ADMIN_PATH}${static.PROFILE_PATH}`;
-// const absoluteCategoryPath = `${static.ADMIN_PATH}${static.CATEGORY_PATH}`;
-// const absoluteProductPath = `${static.ADMIN_PATH}${static.PRODUCT_PATH}`;
-// const absoluteOrderPath = `${static.ADMIN_PATH}${static.ORDER_PATH}`;
-// const absoluteUserPath = `${static.ADMIN_PATH}${static.USER_PATH}`;
-// const absoluteInvoicePath = `${static.ADMIN_PATH}${static.INVOICE_PATH}`;
-//const absoluteAPIPath = `${static.ADMIN_PATH}${static.API}`;
-
 const absoluteIndexPath = "/";
 
 app.locals.pagesPath = {
@@ -110,20 +79,6 @@ app.locals.pagesPath = {
   orderHistoryPagePath: "/account/order-history",
   favoriteProductsPagePath : "/account/favorites",
   apiImagePath : `/api/files/product`
-  
-  //dashboardPagePath: absoluteDashboardPath,
-  //vocabularyPagePath: absoluteVocabularyPath,
-  //partOfSpeechPagePath: absolutePartOfSpeechPath,
-  // feedbackPagePath: absoluteFeedbackPath,
-  // mailPagePath: absoluteMailPath,
-  // profilePagePath: absoluteProfilePath,
-  // categoryPagePath: absoluteCategoryPath,
-  // productPagePath: absoluteProductPath,
-  // orderPagePath: absoluteOrderPath,
-  // userPagePath: absoluteUserPath,
-  // invoicePagePath: absoluteInvoicePath,
-  // apiPath: absoluteAPIPath,
-  // settingsPagePath: "",
 };
 
 app.locals.NotyfType = {
@@ -132,25 +87,9 @@ app.locals.NotyfType = {
   NOTYF_DANGER: static.NOTYF_DANGER,
 };
 
-//app.locals.customer = null;
-
 app.locals.moment = moment;
 
 app.locals.Money = staticFunc.Money;
-
-//app.use(`${static.ADMIN_PATH}/login`, auth.checkAuthorization, indexRouter);
-//app.use(`${static.ADMIN_PATH}users`, auth.checkAuthorization, usersRouter);
-//app.use(absoluteDashboardPath, auth.checkAuthentication, sidebar.render ,dashboardRouter);
-//app.use(absoluteVocabularyPath, auth.checkAuthentication, sidebar.render, vocabularyRouter);
-//app.use(absolutePartOfSpeechPath, auth.checkAuthentication, sidebar.render,partOfSpeechRouter);
-// app.use(absoluteFeedbackPath, auth.checkAuthentication, sidebar.render,feedbackRouter);
-// app.use(absoluteMailPath, auth.checkAuthentication, sidebar.render,mailRouter);
-// app.use(absoluteProfilePath, auth.checkAuthentication, sidebar.render,profileRouter);
-// app.use(absoluteCategoryPath, auth.checkAuthentication, sidebar.render,categoryRouter);
-// app.use(absoluteProductPath, auth.checkAuthentication, sidebar.render,productRouter);
-// app.use(absoluteOrderPath, auth.checkAuthentication, sidebar.render, orderRouter);
-// app.use(absoluteUserPath, auth.checkAuthentication, sidebar.render, userRouter);
-// app.use(absoluteInvoicePath, auth.checkAuthentication, sidebar.render, invoiceRouter);
 app.use("/api", apiRouter);
 
 app.get("/logout", storeController.logOut);
@@ -169,7 +108,7 @@ app.use(absoluteIndexPath,
   auth.getCategories, 
   auth.getRecentViewProducts,
   auth.getRecentSearch,
-store2Route);
+authRoute);
 
 //app.get(`${static.ADMIN_PATH}/logout`,logOut)
 

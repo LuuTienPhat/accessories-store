@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
 const jwt_decode = require("jwt-decode");
-const { returnSignInPage } = require("./controllers/account.controller");
 
 exports.initBreadcrumbOptions = (parent, title, hideBtnNew) => {
   return {
