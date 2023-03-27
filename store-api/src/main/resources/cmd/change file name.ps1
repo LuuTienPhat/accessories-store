@@ -1,0 +1,1 @@
+Get-ChildItem C:\Users\Phat\Documents\eclipse-workspace\spring-security-jwt\uploads\products -Filter *.jpg -Recurse | Rename-Item -NewName { $_.Directory.Name+'_1.jpg'}
