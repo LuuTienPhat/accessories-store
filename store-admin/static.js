@@ -3,18 +3,6 @@ exports.VIEWS_PAGE_DIR = "pages/";
 exports.DASHBOARD_DIR = "dashboard/";
 exports.dashboardView = "dashboard";
 
-exports.VOCABULARY_DIR = "vocabulary/";
-exports.VOCABULARY_VIEW = "vocabulary";
-exports.ADD_VOCABULARY_VIEW = "addVocabulary";
-exports.EDIT_VOCABULARY_VIEW = "editVocabulary";
-exports.VOCABULARY_DETAIL_VIEW = "viewVocabulary";
-
-exports.partOfSpeechDir = "partOfSpeech/";
-exports.partOfSpeechView = "partOfSpeech";
-exports.addPartOfSpeechView = "addPartOfSpeech";
-exports.editPartOfSpeechView = "editPartOfSpeech";
-exports.partOfSpeechDetailView = "viewPartOfSpeech";
-
 exports.feedbackDir = "feedback/";
 exports.feedbackView = "feedback";
 exports.addFeedbackView = "addFeedback";
@@ -73,16 +61,12 @@ exports.API_COUNT_PATH = "/count";
 exports.apiLoginPath = "/login";
 exports.API_USER_PATH = "/users";
 exports.apiLogOutPath = "/logout";
-//exports.API_VOCABULARY_PATH = "/enwords";
-//exports.apiPartOfSpeechPath = "/partofspeeches";
 exports.apiFeedbackPath = "/feedbacks";
 exports.API_MAIL_PATH = "/mails";
 exports.API_PROFILE_PATH = "/profiles";
 exports.API_CATEGORY_PATH = "/categories";
 exports.API_PRODUCT_PATH = "/products";
 exports.API_ORDER_PATH = "/orders";
-//exports.API_MEANING_PATH = "/meanings";
-//exports.API_EXAMPLE_PATH = "/examples";
 exports.API_STAT_PATH = "/stats";
 exports.API_INVOICE_PATH = "/invoices";
 exports.API_UPLOAD_PATH = "/uploads";
@@ -92,22 +76,17 @@ exports.ADMIN_PATH = "/admin";
 exports.API = "/api";
 exports.loginPath = "/login";
 exports.dashboardPath = "/dashboard";
-exports.VOCABULARY_PATH = "/vocabularies";
-exports.partOfSpeechPath = "/partOfSpeeches";
 exports.feedbackPath = "/feedbacks";
 exports.MAIL_PATH = "/mail";
 exports.PROFILE_PATH = "/profiles";
 exports.CATEGORY_PATH = "/categories";
 exports.PRODUCT_PATH = "/products";
 exports.ORDER_PATH = "/orders";
-exports.MEANING_PATH = "/meanings";
 exports.USER_PATH = "/users";
 exports.INVOICE_PATH = "/invoices";
 
 /* ------------ MODAL -------------*/
-exports.DELETE_VOCABULARY_QUESTION = "Are you sure to delete this vocabulary?"
 exports.DELETE_PRODUCT_QUESTION = "Are you sure to delete this product?"
 exports.DELETE_CATEGORY_QUESTION = "Are you sure to delete this category?"
-exports.DELETE_PART_OF_SPEECH_QUESTION = "Are you sure to delete this Part of Speech?"
 
 
