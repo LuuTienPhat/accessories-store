@@ -24,11 +24,9 @@ const PORT = process.env.PORT || 8000;
 console.log("Port: " + PORT);
 
 const indexRouter = require("./routes/account.route");
-const usersRouter = require("./routes/account");
-const accountRouter = require("./routes/account");
+// const usersRouter = require("./routes/account");
+// const accountRouter = require("./routes/account");
 const dashboardRouter = require("./routes/dashboard.route");
-// const vocabularyRouter = require("./routes/vocabulary.route");
-//const partOfSpeechRouter = require("./routes/partOfSpeech.route");
 const feedbackRouter = require("./routes/feedback.route");
 const mailRouter = require("./routes/mail.route");
 const profileRouter = require("./routes/profile.route");
@@ -75,8 +73,6 @@ app.use(
 app.use(flash({ sessionKeyName: "flashMessage" }));
 
 const absoluteDashboardPath = `${static.ADMIN_PATH}${static.dashboardPath}`;
-//const absoluteVocabularyPath = `${static.ADMIN_PATH}${static.VOCABULARY_PATH}`;
-//const absolutePartOfSpeechPath = `${static.ADMIN_PATH}${static.partOfSpeechPath}`;
 const absoluteFeedbackPath = `${static.ADMIN_PATH}${static.feedbackPath}`;
 const absoluteMailPath = `${static.ADMIN_PATH}${static.MAIL_PATH}`;
 const absoluteProfilePath = `${static.ADMIN_PATH}${static.PROFILE_PATH}`;
@@ -89,8 +85,6 @@ const absoluteAPIPath = `${static.ADMIN_PATH}${static.API}`;
 
 app.locals.pagesPath = {
   dashboardPagePath: absoluteDashboardPath,
-  //vocabularyPagePath: absoluteVocabularyPath,
-  //partOfSpeechPagePath: absolutePartOfSpeechPath,
   feedbackPagePath: absoluteFeedbackPath,
   mailPagePath: absoluteMailPath,
   profilePagePath: absoluteProfilePath,
@@ -115,10 +109,8 @@ app.locals.moment = moment;
 app.locals.Money = staticFunc.Money;
 
 app.use(`${static.ADMIN_PATH}/login`, auth.checkAuthorization, indexRouter);
-app.use(`${static.ADMIN_PATH}users`, auth.checkAuthorization, usersRouter);
+// app.use(`${static.ADMIN_PATH}users`, auth.checkAuthorization, usersRouter);
 app.use(absoluteDashboardPath, auth.checkAuthentication, sidebar.render ,dashboardRouter);
-//app.use(absoluteVocabularyPath, auth.checkAuthentication, sidebar.render, vocabularyRouter);
-//app.use(absolutePartOfSpeechPath, auth.checkAuthentication, sidebar.render,partOfSpeechRouter);
 app.use(absoluteFeedbackPath, auth.checkAuthentication, sidebar.render,feedbackRouter);
 app.use(absoluteMailPath, auth.checkAuthentication, sidebar.render,mailRouter);
 app.use(absoluteProfilePath, auth.checkAuthentication, sidebar.render,profileRouter);
