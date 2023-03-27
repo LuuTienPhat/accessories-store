@@ -29,7 +29,7 @@ const authRoute = require("./routes/auth.route");
 
 const storeController = require("./controllers/store.controller");
 
-const auth = require("./middlewares/auth.middleware");
+const auth = require("./middlewares/store.middleware");
 const staticFunc = require("./staticFunction");
 
 

@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const authenticator = require("../middlewares/auth.middleware");
+const authenticator = require("../middlewares/store.middleware");
 const storeController = require("../controllers/store.controller");
-const auth = require("../middlewares/auth.middleware");
+const auth = require("../middlewares/store.middleware");
 
 /* GET users listing. */
 router.get('/', auth.getOriginalUrl, storeController.returnIndexPage); //done
